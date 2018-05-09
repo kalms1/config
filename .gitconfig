@@ -28,8 +28,8 @@
 	ext = !\"C:/Program Files (x86)/GitExtensions/GitExtensions.exe\"&
 	fixup = !sh -c 'git commit --fixup=$1' -
 	squash = !sh -c 'git commit --squash=$1' -
-	find = !sh -c 'git lg --grep="$@"'    # search for a string in the commit message log
-	srch = !sh -c 'git grep "$@" $(git rev-list --all)'    # search for a string in all commits
+	find = !sh -c 'git lg --grep="$@"' -   # search for a string in the commit message log
+	srch = !sh -c 'git grep "$@" $(git rev-list --all)' -   # search for a string in all commits
 	st = status --short --branch
 	unstage = reset HEAD --
 	discard = checkout --
