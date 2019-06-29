@@ -1,25 +1,36 @@
-[user]
-	name = kalms
-	email = bhkang@xlgames.com
-[merge]
-	tool = BeyondCompare4
-[diff]
-	guitool = beyondcompare4
 [core]
-	editor = \"C:/Program Files/Notepad++/notepad++.exe\" -multiInst -nosession
-	commentchar = $
-	autocrlf = true
-[difftool "beyondcompare4"]
-	path = C:/Program Files/Beyond Compare 4/bcomp.exe
-	cmd = \"C:/Program Files/Beyond Compare 4/bcomp.exe\" \"$LOCAL\" \"$REMOTE\"
-[mergetool "BeyondCompare4"]
-	path = C:/Program Files/Beyond Compare 4/bcomp.exe
-	cmd = \"C:/Program Files/Beyond Compare 4/bcomp.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+	editor = vim
+[merge]
+    keepBackup = false;
+    tool = p4merge
+[mergetool]
+    prompt = false
+[mergetool "p4merge"]
+    cmd = p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+    keepTemporaries = false
+    trustExitCode = false
+    keepBackup = false
+[diff]
+    tool = p4merge
+[difftool]
+    prompt = false
+[difftool "p4merge"]
+    cmd = p4merge "$LOCAL" "$REMOTE"
+    keepTemporaries = false
+    trustExitCode = false
+    keepBackup = false
+
+[user]
+	email = bhkang@wise-fashion.com
+	name = bhkang
+
 [branch]
 	autosetuprebase = always
 [pull]
 	rebase = true
 [alias]
+	echo = "!f() { if [ $# -eq 0 ]; then echo zero; else echo n=$# 1=$1 2=$2 *=$* @=$@; fi; }; f"
+	alias = "!f() { if [ $# -eq 0 ]; then git config --get-regexp alias; else git config --global alias.$*; fi }; f"
 	co = checkout
 	br = branch
 	ci = commit
@@ -49,7 +60,6 @@
 	ld = log --pretty=format:%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]--decorate --date=short --graph
 	ls = log --pretty=format:%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]--decorate --date=relative
 	lg = log --graph --abbrev-commit --decorate --format=format:'%C(cyan)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(yellow)%d%C(reset)' --all
-	alias = "!f() { git config --get-regexp alias.$@; }; f"
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
