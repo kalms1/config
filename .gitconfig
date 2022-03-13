@@ -1,5 +1,6 @@
 [core]
 	editor = vim
+	autocrlf = input
 [merge]
     keepBackup = false;
     tool = p4merge
@@ -56,9 +57,9 @@
 	rbc = rebase --continue
 	rba = rebase --abort
 	rpo = remote prune origin
-	ll = log --pretty=format:%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]--decorate --numstat
-	ld = log --pretty=format:%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]--decorate --date=short --graph
-	ls = log --pretty=format:%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]--decorate --date=relative
+	ll = log --pretty=format:%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn] --decorate --numstat
+	ld = log --pretty=format:%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn] --decorate --date=short --graph
+	ls = log --pretty=format:%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn] --decorate --date=relative
 	lg = log --graph --abbrev-commit --decorate --format=format:'%C(cyan)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(yellow)%d%C(reset)' --all
 [filter "lfs"]
 	clean = git-lfs clean -- %f
